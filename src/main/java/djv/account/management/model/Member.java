@@ -1,0 +1,27 @@
+package djv.account.management.model;
+
+import lombok.*;
+
+import java.util.List;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class Member {
+
+    public int id;
+    public String memberId;
+    public String firstName;
+    public String lastName;
+
+    public List<CheckingAccount> checkingAccounts;
+    public List<SavingsAccount> savingsAccounts;
+
+    public Member(int id, String memberId, String firstName, String lastName) {
+        this.id = id;
+        this.memberId = memberId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+    }
+
+}
