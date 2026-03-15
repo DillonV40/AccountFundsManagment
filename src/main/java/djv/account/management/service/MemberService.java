@@ -17,10 +17,20 @@ public class MemberService {
 
     public String createMember(MemberCreationRequest memberCreationRequest) {
 
-        MemberEntity newMember = createNewEntity(memberCreationRequest);
-        memberRepository.save(newMember);
+        // check if they exist before saving
+        if (memberExist(memberCreationRequest.getEmail())) {
+            System.out.println("Member Exists!!!");
+            return memberRepository.findByEmail(memberCreationRequest.getEmail()).getMemberId().toString();
+        } else {
+            System.out.println("Member does not exist!!");
+            MemberEntity newMember = createNewEntity(memberCreationRequest);
+            memberRepository.save(newMember);
+            return newMember.getMemberId().toString();
+        }
+    }
 
-        return newMember.getMemberId().toString();
+    private boolean memberExist(String email) {
+        return memberRepository.findByEmail(email) != null;
     }
 
     private MemberEntity createNewEntity(MemberCreationRequest memberCreationRequest) {
