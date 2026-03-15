@@ -1,9 +1,15 @@
-//package djv.account.management.model.request;
-//
-//import djv.account.management.enums.AccountTypes;
-//import djv.account.management.model.Member;
-//
-//public class MemberCreationRequest extends Member {
-//
-//
-//}
+package djv.account.management.model.request;
+
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Data
+public class MemberCreationRequest{
+
+    public String firstName;
+    public String lastName;
+    public String email;
+}
