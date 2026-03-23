@@ -2,6 +2,8 @@ package djv.account.management.model;
 
 import lombok.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @AllArgsConstructor
@@ -13,6 +15,9 @@ public class Member {
     public String memberId;
     public String firstName;
     public String lastName;
+    public LocalDateTime createdDate;
+    public LocalDateTime modifiedDate;
+    public LocalDate dateOfBirth;
 
     public List<CheckingAccount> checkingAccounts;
     public List<SavingsAccount> savingsAccounts;

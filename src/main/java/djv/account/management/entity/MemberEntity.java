@@ -6,6 +6,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 import lombok.*;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Entity
@@ -31,4 +33,13 @@ public class MemberEntity {
 
     @Column(name="email", nullable=false)
     private String email;
+
+    @Column(name = "date_of_birth")
+    private LocalDate dateOfBirth;
+
+    @Column(name = "created_date", updatable = false)
+    private LocalDateTime createdAt;
+
+    @Column(name = "modified_date")
+    private LocalDateTime updatedAt;
 }

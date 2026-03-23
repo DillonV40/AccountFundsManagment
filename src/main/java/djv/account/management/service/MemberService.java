@@ -5,11 +5,14 @@ import djv.account.management.model.Member;
 import djv.account.management.model.request.MemberCreationRequest;
 import djv.account.management.repository.MemberRepository;
 import lombok.AllArgsConstructor;
+import lombok.extern.log4j.Log4j2;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 @Service
+@Log4j2
 @AllArgsConstructor
 public class MemberService {
 
@@ -19,10 +22,10 @@ public class MemberService {
 
         // check if they exist before saving
         if (memberExist(memberCreationRequest.getEmail())) {
-            System.out.println("Member Exists!!!");
+            log.debug("Member exists");
             return memberRepository.findByEmail(memberCreationRequest.getEmail()).getMemberId().toString();
         } else {
-            System.out.println("Member does not exist!!");
+            log.debug("Member does not exists");
             MemberEntity newMember = createNewEntity(memberCreationRequest);
             memberRepository.save(newMember);
             return newMember.getMemberId().toString();
@@ -41,6 +44,9 @@ public class MemberService {
                 .firstName(memberCreationRequest.getFirstName())
                 .lastName(memberCreationRequest.getLastName())
                 .email(memberCreationRequest.getEmail())
+                .dateOfBirth(memberCreationRequest.getDateOfBirth())
+                .createdAt(LocalDateTime.now())
+                .updatedAt(LocalDateTime.now())
                 .build();
     }
 }
