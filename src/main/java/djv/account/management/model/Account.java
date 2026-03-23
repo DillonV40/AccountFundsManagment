@@ -9,6 +9,7 @@ import java.time.LocalDateTime;
 @Data
 public class Account {
 
+
     public int id;
     public String memberId;
     public int accountNumber;
