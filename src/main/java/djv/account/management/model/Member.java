@@ -19,8 +19,7 @@ public class Member {
     public LocalDateTime modifiedDate;
     public LocalDate dateOfBirth;
 
-    public List<CheckingAccount> checkingAccounts;
-    public List<SavingsAccount> savingsAccounts;
+    public List<Account> accounts;
 
     public Member(int id, String memberId, String firstName, String lastName) {
         this.id = id;

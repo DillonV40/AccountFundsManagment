@@ -2,6 +2,7 @@ package djv.account.management.controller;
 
 import djv.account.management.model.Account;
 import djv.account.management.model.Member;
+import djv.account.management.model.request.AccountCreationRequest;
 import djv.account.management.model.request.MemberCreationRequest;
 import djv.account.management.service.AccountService;
 import djv.account.management.service.MemberService;
@@ -31,8 +32,8 @@ public class AccountController {
     }
 
     @PostMapping("account-creation")
-    public int accountCreation(@RequestBody Account account) {
-        return accountService.createAccount(account);
+    public int accountCreation(@RequestBody AccountCreationRequest accountCreationRequest) {
+        return accountService.createAccount(accountCreationRequest);
     }
 
 }

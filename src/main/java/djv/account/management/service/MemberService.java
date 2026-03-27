@@ -32,6 +32,10 @@ public class MemberService {
         }
     }
 
+    public boolean memberExistById(UUID id) {
+        return memberRepository.findByMemberId(id) != null;
+    }
+
     private boolean memberExist(String email) {
         return memberRepository.findByEmail(email) != null;
     }
